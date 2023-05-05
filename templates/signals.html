@@ -1,0 +1,38 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<a href="{% url 'add_signal' %}" class="btn btn-outline-primary">Add Signal</a>
+<hr />
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Client</th>
+      <th scope="col">Signal Type</th>
+      <th scope="col">Stakeholder Name</th>
+      <th scope="col">Stakeholder Current Company</th>
+      <th scope="col">Stakeholder Current Email</th>
+      <th scope="col">Stakeholder Current Title</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for i in signals %}
+    <tr>
+      <td>{{ i.client.name }}</td>
+      {% if i.signal_type == '01' %}
+      <td>Stakeholders Being Hired In Customer Accounts</td>
+      {% elif i.signal_type == '02' %}
+      <td>Stakeholders Leaving Customer Accounts</td>
+      {% elif i.signal_type == '03' %}
+      <td>Customers Moving Into Prospect Accounts</td>
+      {% elif i.signal_type == '04' %}
+      <td>Customers Moving Into Greenfield Accounts</td>
+      {% elif i.signal_type == '05' %}
+      <td>Stakeholders Being Hired In Prospect Accounts</td>
+      {% endif %}
+      <td>{{ i.stakeholder_first_name }} {{ i.stakeholder_last_name }}</td>
+      <td>{{ i.stakeholder_current_company }}</td>
+      <td>{{ i.stakeholder_current_email }}</td>
+      <td>{{ i.stakeholder_current_title }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<button class="btn btn-outline-primary" id="integrationsButton">Configure Integrations</button>
+<hr>
+<h2>Details</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{ client.id }}</td>
+      <td>{{ client.name }}</td>
+      <td>{{ client.email }}</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<h2>Signals</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Client</th>
+      <th scope="col">Signal Type</th>
+      <th scope="col">Stakeholder Name</th>
+      <th scope="col">Stakeholder Current Company</th>
+      <th scope="col">Stakeholder Current Email</th>
+      <th scope="col">Stakeholder Current Title</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for i in signals %}
+    <tr>
+      <td>{{ i.client.name }}</td>
+      {% if i.signal_type == '01' %}
+      <td>Stakeholders Being Hired In Customer Accounts</td>
+      {% elif i.signal_type == '02' %}
+      <td>Stakeholders Leaving Customer Accounts</td>
+      {% elif i.signal_type == '03' %}
+      <td>Customers Moving Into Prospect Accounts</td>
+      {% elif i.signal_type == '04' %}
+      <td>Customers Moving Into Greenfield Accounts</td>
+      {% elif i.signal_type == '05' %}
+      <td>Stakeholders Being Hired In Prospect Accounts</td>
+      {% endif %}
+      <td>{{ i.stakeholder_first_name }} {{ i.stakeholder_last_name }}</td>
+      <td>{{ i.stakeholder_current_company }}</td>
+      <td>{{ i.stakeholder_current_email }}</td>
+      <td>{{ i.stakeholder_current_title }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<script src="https://unpkg.com/@integration-app/sdk@0.16.51/bundle.js"></script>
+<script>
+  window.addEventListener("load", async (event) => {
+    // Get Integration.app access token from your backend
+    // let accessToken = await (
+    //   await fetch("http://localhost:8080/integration-token")
+    // ).json();
+    let accessToken = "{{ access_token|safe }}"
+    // console.log(accessToken);
+
+    // Initialize Integration.app SDK
+    iApp.init({ token: accessToken });
+    // console.log(iApp);
+    // integrationApp.init({ token: accessToken })
+    // const findResponse = await iApp.integrations.find()
+
+    // const integrations = findResponse.items
+    // console.log(integrations);
+
+    // const flowRun = await iApp
+    //   .flowInstance({
+    //     integrationKey: 'pipedrive',
+    //     flowKey: 'send-contact-to-crm',
+    //     autoCreate: true,
+    //   })
+    //   .run({
+    //     input: {
+    //       fullName: 'Abdul Mannan Mujawar',
+    //       email: 'reachabdulmannan@gmail.com',
+    //     },
+    //   })
+    // const dataSourceInstance = await iApp.dataSourceInstance({
+    //     integrationKey: 'pipedrive',
+    //     udm: 'contacts',
+    //     autoCreate: true,
+    // }).get()
+    // console.log(dataSourceInstance);
+
+    // Add onclick event to the button
+    document.getElementById("integrationsButton").onclick = () => {
+      // Open integrations
+      
+      iApp.open()
+      // iApp
+      // .flowInstance({
+      //   integrationKey: 'pipedrive',
+      //   flowKey: 'send-contact-to-crm',
+      // })
+      // .openConfiguration()
+      
+  };
+});
+</script>
+{% endblock %}
