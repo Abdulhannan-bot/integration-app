@@ -40,6 +40,7 @@ class SignalForm(forms.ModelForm):
   stakeholder_current_title = forms.CharField(max_length = 255, required = True, widget = forms.TextInput(attrs = {'class': "form-control"}))
   stakeholder_time_in_current_role = forms.CharField(max_length = 255, required = True, widget = forms.TextInput(attrs = {'class': "form-control"}))
   stakeholder_current_email = forms.EmailField(max_length = 255, required = True, widget = forms.TextInput(attrs = {'class': "form-control"}))
+  stakeholder_phone_number = forms.CharField(max_length = 255, required = True, widget = forms.TextInput(attrs = {'class': "form-control"}))
   class Meta:
     model = Signal
-    fields = ['client', 'signal_type','stakeholder_current_company','stakeholder_first_name','stakeholder_last_name', 'stakeholder_current_title','stakeholder_time_in_current_role','stakeholder_current_email']
+    fields = ['client', 'signal_type','stakeholder_current_company','stakeholder_first_name','stakeholder_last_name', 'stakeholder_current_title','stakeholder_time_in_current_role','stakeholder_current_email','stakeholder_phone_number']

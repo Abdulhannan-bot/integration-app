@@ -15,6 +15,19 @@
       sizes="16x16"
       href="{% static 'assets/images/favicon.png' %}"
     />
+    <!-- chartist CSS -->
+    <link href="{% static 'assets/libs/chartist/dist/chartist.min.css' %}" type="text/css" rel="stylesheet">
+    <link href="{% static 'assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css' %}" type="text/css"
+        rel="stylesheet">
+
+    <!--c3 CSS -->
+    <link href="{% static 'assets/libs/morris.js/morris.css' %}" type="text/css" rel="stylesheet">
+    <link href="{% static 'assets/extra-libs/c3/c3.min.css' %}" type="text/css" rel="stylesheet">
+    <!-- Custom CSS -->
+
+    <!-- needed css -->
+    <link href="{% static 'dist/css/style.min.css' %}" type="text/css" rel="stylesheet">
+
     <link rel="stylesheet" href="{% static '/dist/css/main.css' %}" />
     <title>
       Ample admin Template - The Ultimate Multipurpose admin template
@@ -256,6 +269,7 @@
       </aside>
 
       <div class="page-wrapper">
+        <div id="cover-spin"></div>
         <div class="page-content container-fluid">
           {% block content %}{{ request.user }} {% endblock %}
         </div>
@@ -279,5 +293,20 @@
     <script src="{% static 'dist/js/waves.js' %}"></script>
     <script src="{% static 'dist/js/sidebarmenu.js' %}"></script>
     <script src="{% static 'dist/js/custom.min.js' %}"></script>
+    <script src="{% static 'assets/libs/chartist/dist/chartist.min.js' %}"></script>
+    <script src="{% static 'dist/js/pages/chartist/chartist-plugin-tooltip.js' %}"></script>
+    <script src="{% static 'assets/extra-libs/c3/d3.min.js' %}"></script>
+    <script src="{% static 'assets/extra-libs/c3/c3.min.js' %}"></script>
+    <script src="{% static 'assets/libs/raphael/raphael.min.js' %}"></script>
+
+
+    <script src="{% static 'assets/libs/select2/dist/js/select2.full.min.js' %}"></script>
+    <script src="{% static 'assets/libs/select2/dist/js/select2.min.js' %}"></script>
+    <script src="{% static 'dist/js/pages/forms/select2/select2.init.js' %}"></script>
+    <script>
+      // $(window).on('load', function () {
+      //       $('#cover-spin').hide();
+      // })
+    </script>
   </body>
 </html>

@@ -31,6 +31,7 @@ class Signal(models.Model):
     stakeholder_current_title = models.CharField(max_length=255) 
     stakeholder_time_in_current_role = models.CharField(max_length=255) 
     stakeholder_current_email = models.CharField(max_length=255) 
+    stakeholder_phone_number = models.CharField(max_length=100, null = True)
 
 
 @receiver(post_save, sender = User)

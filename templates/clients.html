@@ -6,6 +6,7 @@
 <table class="table">
   <thead>
     <tr>
+      <th scope="col">Username</th>
       <th scope="col">Name</th>
       <th scope="col">Email</th>
       <th scope="col">Password</th>
@@ -14,6 +15,7 @@
   <tbody>
     {% for i in clients %}
     <tr>
+      <td>{{ i.user.username }}</td>
       <td>{{ i.name }}</td>
       <td>{{ i.email }}</td>
       <td>{{ i.password }}</td>

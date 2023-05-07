@@ -98,8 +98,10 @@
     // Add onclick event to the button
     document.getElementById("integrationsButton").onclick = () => {
       // Open integrations
-      
+      const spinner = document.getElementById('coverspin')
+      $('#cover-spin').show(0);
       iApp.open()
+      // $('#cover-spin').hide(0);
       // iApp
       // .flowInstance({
       //   integrationKey: 'pipedrive',
